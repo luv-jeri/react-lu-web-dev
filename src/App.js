@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/header/Header';
+import Card from './components/card/Card';
+import data from './data/movie.json';
 
-function App() {
+const App = () => {
+  const { results } = data;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      {results.map((movie , index) => {
+        return <Card key={index} name={movie.title} poster={movie.poster_path} />;
+      })}
     </div>
   );
-}
+};
 
 export default App;
