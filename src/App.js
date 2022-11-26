@@ -1,15 +1,33 @@
-import Header from './components/header/Header';
-import Card from './components/card/Card';
-import data from './data/movie.json';
+import { useState, useEffect} from 'react';
 
 const App = () => {
-  const { results } = data;
+  const [state, setState] = useState(0);
+
+  const onRender = () => {
+    console.log("Heyy I'm rendered");
+  };
+
+  useEffect(onRender);
+
+  let count = 0;
+  const handleClickCount = () => {
+    count++;
+    console.log(count);
+  };
+
+  const handleClickState = () => {
+    setState(state + 1);
+  };
+
   return (
     <div>
-      <Header />
-      {results.map((movie , index) => {
-        return <Card key={index} name={movie.title} poster={movie.poster_path} />;
-      })}
+      <h1>useState</h1>
+      <div>
+        <h2>Count - {count}</h2>
+        <h2>State - {state}</h2>
+        <button onClick={handleClickCount}>Count</button>
+        <button onClick={handleClickState}>State</button>
+      </div>
     </div>
   );
 };

@@ -3,3 +3,15 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+button {
+    cursor: pointer;
+    background-color: rgb(51, 98, 4);
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    margin: 5px;
+}
