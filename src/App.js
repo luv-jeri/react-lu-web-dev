@@ -1,32 +1,41 @@
-import { useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
+
+let normalVariableOutside = 0;
 
 const App = () => {
+  let normalVariable = 0;
+
+  const handleNormalVariable = () => {
+    normalVariable = 3453456;
+    console.log('normalVariable', normalVariable);
+  };
+
+  const handlNormalVariableOutside = () => {
+    normalVariableOutside = normalVariableOutside + 1;
+    console.log('normalVariableOutside', normalVariableOutside);
+  };
+
   const [state, setState] = useState(0);
-
-  const onRender = () => {
-    console.log("Heyy I'm rendered");
-  };
-
-  useEffect(onRender);
-
-  let count = 0;
-  const handleClickCount = () => {
-    count++;
-    console.log(count);
-  };
-
-  const handleClickState = () => {
-    setState(state + 1);
-  };
 
   return (
     <div>
       <h1>useState</h1>
       <div>
-        <h2>Count - {count}</h2>
-        <h2>State - {state}</h2>
-        <button onClick={handleClickCount}>Count</button>
-        <button onClick={handleClickState}>State</button>
+        <h3>normalVariable : {normalVariable}</h3>
+        <h3>normalVariableOutside : {normalVariableOutside}</h3>
+        <h3>state : {state}</h3>
+        <button onClick={handleNormalVariable}> normalVariable Change </button>
+        <button onClick={handlNormalVariableOutside}>
+          normalVariableOutside Change{' '}
+        </button>
+
+        <button
+          onClick={() => {
+            setState(state + 1);
+          }}
+        >
+          Re render
+        </button>
       </div>
     </div>
   );
