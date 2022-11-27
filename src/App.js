@@ -39,6 +39,8 @@ const countReducer = (state, action) => {
       return state + 1;
     case 'dec':
       return state - 1;
+    case 'square':
+      return state * state;
     default:
       return state;
   }
@@ -46,12 +48,14 @@ const countReducer = (state, action) => {
 
 const App = () => {
   const [count, dispatch] = useReducer(countReducer, 0);
+
   return (
     <div>
       <h1>useReducer</h1>
       <h2>Count : {count}</h2>
       <button onClick={() => dispatch({ type: 'inc' })}>➕</button>
       <button onClick={() => dispatch({ type: 'dec' })}>➖</button>
+      <button onClick={() => dispatch({ type: 'square' })}>🚀</button>
     </div>
   );
 };
