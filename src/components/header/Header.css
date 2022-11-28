@@ -1,0 +1,10 @@
+header {
+    height: 10vh;
+    background-color: #222222;
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    color : #F2E5E5
+}

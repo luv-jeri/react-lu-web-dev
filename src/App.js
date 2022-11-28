@@ -1,29 +1,51 @@
 import { useState, useEffect } from 'react';
+import Header from './components/header/Header';
+import Card from './components/card/Card';
+import './App.css';
+import axios from 'axios';
 
 const App = () => {
-  const [name, setName] = useState('John Doe');
-  const [count, setCount] = useState(0);
+  
+  const [user, setUser] = useState('');
 
-  const inputHandler = (e) => {
-    setName(e.target.value);
-  };
-  const handleButtonClick = () => {
-    setCount(count + 1);
+  let timeout = null;
+
+  const getUserDetails = (username) => {
+    if (timeout) clearTimeout(timeout);
+    timeout = setTimeout(async () => {
+      try {
+        const { data } = await axios.get(`https://api.github.com/users/${username}`);
+        setUser({
+          name: data.name,
+          avatar: data.avatar_url,
+          bio: data.bio,
+          company: data.company,
+          followers: data.followers,
+          following: data.following,
+          location: data.location,
+        });
+      } catch (error) {
+        console.log('User not found');
+        setUser(null);
+      }
+    }, 1000);
   };
 
   useEffect(() => {
-    console.log('I am fucntion inside useEffect');
-  }, [count]);
+    getUserDetails(user);
+  }, [user]);
+
+  const handleInput = (e) => {
+    setUser(e.target.value);
+  };
 
   return (
     <div>
-      <h1>useEffect</h1>
-      <h1 id='title'>🚀</h1>
-      <h2>
-        {name} - {count}
-      </h2>
-      <input onChange={inputHandler} />
-      <button onClick={handleButtonClick}>Click me</button>
+      <Header />
+      <section className='wrapper'>
+        <input onChange={handleInput} />
+        {user ? <Card user={user} /> : <h1>No user</h1>}
+      </section>
     </div>
   );
 };

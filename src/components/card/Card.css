@@ -1,0 +1,25 @@
+ .card-wrapper {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     max-width: 400px;
+     height: 50vh;
+     margin: 50px auto;
+     padding: 20px;
+     border-radius: 10px;
+     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+     background-color: #fff;
+     transition: all 0.3s ease;
+ }
+
+ .card-wrapper img {
+     width: 200px;
+     object-fit: cover;
+     border-radius: 10px;
+ }
+
+ .content {
+     width: 100%;
+     padding: 5px;
+ }
