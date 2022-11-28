@@ -1,42 +1,29 @@
 import { useState, useEffect } from 'react';
 
-let normalVariableOutside = 0;
-
 const App = () => {
-  let normalVariable = 0;
+  const [name, setName] = useState('John Doe');
+  const [count, setCount] = useState(0);
 
-  const handleNormalVariable = () => {
-    normalVariable = 3453456;
-    console.log('normalVariable', normalVariable);
+  const inputHandler = (e) => {
+    setName(e.target.value);
+  };
+  const handleButtonClick = () => {
+    setCount(count + 1);
   };
 
-  const handlNormalVariableOutside = () => {
-    normalVariableOutside = normalVariableOutside + 1;
-    console.log('normalVariableOutside', normalVariableOutside);
-  };
-
-  const [state, setState] = useState(0);
+  useEffect(() => {
+    console.log('I am fucntion inside useEffect');
+  }, [count]);
 
   return (
     <div>
-      <h1>useState</h1>
-      <div>
-        <h3>normalVariable : {normalVariable}</h3>
-        <h3>normalVariableOutside : {normalVariableOutside}</h3>
-        <h3>state : {state}</h3>
-        <button onClick={handleNormalVariable}> normalVariable Change </button>
-        <button onClick={handlNormalVariableOutside}>
-          normalVariableOutside Change{' '}
-        </button>
-
-        <button
-          onClick={() => {
-            setState(state + 1);
-          }}
-        >
-          Re render
-        </button>
-      </div>
+      <h1>useEffect</h1>
+      <h1 id='title'>🚀</h1>
+      <h2>
+        {name} - {count}
+      </h2>
+      <input onChange={inputHandler} />
+      <button onClick={handleButtonClick}>Click me</button>
     </div>
   );
 };
