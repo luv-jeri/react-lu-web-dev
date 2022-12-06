@@ -13,12 +13,21 @@ body {
 
 button {
     cursor: pointer;
-    background-color: rgb(51, 98, 4);
+    background-color: #810CA8;
+    color: #fff;
     border: none;
     border-radius: 5px;
-    padding: 10px;
+    padding: 10px 20px;
     font-size: 1.2rem;
-    font-weight: bold;
-    color: white;
+    font-weight: 600;
+}
+
+input {
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
     margin: 5px;
+
 }

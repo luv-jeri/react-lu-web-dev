@@ -1,16 +1,20 @@
-import Header from './components/header/Header';
 import './App.css';
-import axios from 'axios';
-import { useState, useEffect } from 'react';
-import Card from './components/card/Card';
+import Card from './Card';
+import EnterDetails from './EnterDetails';
+import { useState } from 'react';
 
 const App = () => {
+  const [currentCard, setCurrentCard] = useState('React');
+
   return (
     <div>
-      <Header />
-      <Card />
+      <h1>Use Context</h1>
+      <Card title='React' currentCard={currentCard} setter={setCurrentCard} />
+      <Card title='Vue' currentCard={currentCard} setter={setCurrentCard} />
+      <Card title='Angular' currentCard={currentCard} setter={setCurrentCard} />
     </div>
   );
 };
 
 export default App;
+
