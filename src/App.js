@@ -1,20 +1,24 @@
 import './App.css';
-import Card from './Card';
-import EnterDetails from './EnterDetails';
-import { useState } from 'react';
+import Layout from './components/Layout';
+import { createContext, useState } from 'react';
+
+const CartContext = createContext();
+
 
 const App = () => {
-  const [currentCard, setCurrentCard] = useState('React');
-
+  const [cartItem, setCartItem] = useState(0);
+  console.log('App Rendered');
   return (
-    <div>
-      <h1>Use Context</h1>
-      <Card title='React' currentCard={currentCard} setter={setCurrentCard} />
-      <Card title='Vue' currentCard={currentCard} setter={setCurrentCard} />
-      <Card title='Angular' currentCard={currentCard} setter={setCurrentCard} />
-    </div>
+    <CartContext.Provider
+      value={{
+        cartItem,
+        setCartItem,
+      }}
+    >
+      <Layout />
+    </CartContext.Provider>
   );
 };
 
 export default App;
-
+export { CartContext };
